@@ -1,48 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retail Sales EDA Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3e8ff;
+      color: #2e1065;
+      margin: 0;
+      padding: 30px 16px;
+    }
+    main {
+      max-width: 750px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px #6b21a81f;
+    }
+    h1 { color: #7e22ce; }
+    h2 { color: #6b21a8; }
+    .item {
+      padding: 14px;
+      margin: 12px 0;
+      background: #f3e8ff;
+      border-left: 5px solid #9333ea;
+      border-radius: 8px;
+    }
+    a { color: #7e22ce; font-weight: bold; }
+    .note { color: #6b21a8; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Retail Product Performance EDA 💜</h1>
+    <p class="note">Retail Sales Data Analysis using Python</p>
 
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f3e8ff;
-    color: #2e1065;
-    margin: 0;
-    padding: 30px 16px;
-  }
+    <h2>About the Project</h2>
+    <p>This project analyzes retail sales, product performance,
+    category revenue, discounts, and weekday sales patterns.</p>
 
-  main {
-    max-width: 750px;
-    margin: 30px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px #6b21a81f;
-  }
+    <h2>Project Files</h2>
+    <div class="item">
+      <strong>Python Notebook</strong><br>
+      <a href="MUC01_Retail_Sales_EDA.ipynb">View Analysis</a>
+    </div>
+    <div class="item">
+      <strong>Sales Dataset</strong><br>
+      <a href="MUC01_Retail_Sales_Dataset.csv">View Dataset</a>
+    </div>
+    <div class="item">
+      <strong>Project Summary</strong><br>
+      <a href="MUC01_DIET_Summary.docx">View Summary</a>
+    </div>
 
-  h1 {
-    color: #7e22ce;
-  }
+    <h2>Tools Used</h2>
+    <p>Python | Pandas | Matplotlib | Jupyter Notebook</p>
 
-  h2 {
-    color: #6b21a8;
-  }
-
-  .item {
-    padding: 14px;
-    margin: 12px 0;
-    background: #f3e8ff;
-    border-left: 5px solid #9333ea;
-    border-radius: 8px;
-  }
-
-  a {
-    color: #7e22ce;
-    font-weight: bold;
-  }
-
-  a:hover {
-    color: #c026d3;
-  }
-
-  .note {
-    color: #6b21a8;
-  }
-</style>
+    <h2>Key Findings</h2>
+    <ul>
+      <li>Electronics revenue declined from January to June.</li>
+      <li>Apparel revenue increased during the same period.</li>
+      <li>Average revenue per transaction generally decreased
+      as discounts increased.</li>
+    </ul>
+  </main>
+</body>
+</html>
