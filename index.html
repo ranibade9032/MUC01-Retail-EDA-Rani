@@ -1,256 +1,310 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retail Sales EDA | Project</title>
+<title>Retail Sales EDA | Bade Rani</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f4f6fb;
-    color: #253047;
-    line-height: 1.7;
-}
-
-nav {
-    background: #101c3a;
-    color: white;
-    padding: 18px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-nav h2 {
-    font-size: 21px;
-}
-
-nav span {
-    color: #a5b4fc;
-    font-size: 14px;
-}
-
-.hero {
-    background: linear-gradient(120deg, #101c3a, #4936a8, #087f8c);
-    color: white;
-    padding: 65px 8%;
-}
-
-.hero small {
-    color: #c7d2fe;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
-.hero h1 {
-    font-size: clamp(32px, 5vw, 48px);
-    margin: 12px 0;
-}
-
-.hero p {
-    max-width: 650px;
-    color: #e2e8f0;
-}
-
-.tag {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 7px 14px;
-    border: 1px solid #c7d2fe;
-    border-radius: 20px;
-    font-size: 13px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 38px 20px;
-}
-
-.section-title {
-    font-size: 25px;
-    margin-bottom: 8px;
-    color: #172554;
-}
-
-.subtitle {
-    color: #64748b;
-    margin-bottom: 24px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 5px 20px #1725540c;
-    border-top: 4px solid #64748b;
-    transition: transform .2s, box-shadow .2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px #17255418;
-}
-
-.card h3 {
-    margin: 10px 0;
-    font-size: 19px;
-}
-
-.card p {
-    color: #64748b;
-    font-size: 14px;
-    margin-bottom: 16px;
-}
-
-.blue { border-color: #3975e8; }
-.purple { border-color: #8b5cf6; }
-.teal { border-color: #0d9488; }
-.orange { border-color: #f59e0b; }
-
-.icon {
-    font-size: 30px;
-}
-
-.btn {
-    display: inline-block;
-    text-decoration: none;
-    color: white;
-    padding: 9px 15px;
-    border-radius: 7px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.blue-btn { background: #3975e8; }
-.purple-btn { background: #7c3aed; }
-.teal-btn { background: #0d9488; }
-.orange-btn { background: #d97706; }
-
-.about {
-    background: white;
-    border-radius: 14px;
-    padding: 26px;
-    margin-top: 30px;
-    border-left: 5px solid #0d9488;
-}
-
-.about h3 {
-    color: #0f766e;
-    margin-bottom: 8px;
-}
-
-footer {
-    background: #101c3a;
-    color: #cbd5e1;
-    text-align: center;
-    padding: 24px;
-    font-size: 13px;
-    margin-top: 25px;
-}
-
-footer strong {
-    color: white;
-}
-
-@media(max-width: 600px) {
-    nav { padding: 16px 5%; }
-    .hero { padding: 45px 6%; }
-    .container { padding: 28px 16px; }
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f7fb;color:#1e293b;line-height:1.6}
+nav{background:#101c3a;color:white;padding:18px 6%;display:flex;justify-content:space-between;flex-wrap:wrap}
+nav a{color:#dbeafe;text-decoration:none;margin:0 8px}
+.hero{padding:65px 7%;color:white;background:linear-gradient(120deg,#101c3a,#4338ca,#0f766e)}
+.hero h1{font-size:clamp(30px,5vw,48px);margin:15px 0}
+.hero p{max-width:750px;color:#e2e8f0}
+.tags span{display:inline-block;border:1px solid #ffffff66;padding:5px 12px;border-radius:20px;margin:15px 5px 0 0}
+.container{max-width:1150px;margin:auto;padding:30px 20px}
+h2{color:#172554;margin-bottom:8px}
+.subtitle{color:#64748b;margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card,.panel,.finding,.recommendation,.resource{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:20px;box-shadow:0 5px 20px #0f172a08}
+.card{border-top:4px solid #4f46e5}
+.card:nth-child(2){border-top-color:#0d9488}
+.card:nth-child(3){border-top-color:#d97706}
+.card:nth-child(4){border-top-color:#db2777}
+.label{font-size:12px;color:#64748b;font-weight:bold}
+.value{font-size:27px;font-weight:bold;margin:8px 0;color:#172554}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+.panel h3{color:#312e81;margin-bottom:5px}
+.panel p{font-size:13px;color:#64748b;margin-bottom:15px}
+.chart{height:300px}
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.finding h3{font-size:16px;color:#312e81;margin:8px 0}
+.finding p,.recommendation p,.resource p{font-size:14px;color:#64748b}
+.recommendations,.resources{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.resource h3,.recommendation h3{margin-bottom:7px;color:#312e81}
+.resource a{display:inline-block;background:#4338ca;color:white;padding:9px 13px;border-radius:7px;text-decoration:none;margin-top:12px}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{text-align:left;padding:12px;border-bottom:1px solid #e2e8f0}
+th{background:#eef2ff}
+.tablebox{overflow-x:auto}
+.note{background:#fff7ed;border:1px solid #fed7aa;padding:18px;border-radius:12px;margin-top:20px;color:#9a3412}
+footer{background:#101c3a;color:white;text-align:center;padding:25px;margin-top:30px}
+@media(max-width:800px){.cards{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.findings{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.findings,.recommendations,.resources{grid-template-columns:1fr}.hero{padding:40px 6%}.container{padding:25px 15px}nav{gap:12px}}
 </style>
 </head>
 
 <body>
-
 <nav>
-    <h2>📊 Retail Analytics</h2>
-    <span>DATA ANALYSIS PROJECT</span>
+<strong>Retail<span style="color:#a5b4fc">Insights.</span></strong>
+<div>
+<a href="#overview">Overview</a>
+<a href="#analysis">Analysis</a>
+<a href="#findings">Findings</a>
+<a href="#recommendations">Recommendations</a>
+<a href="#resources">Files</a>
+</div>
 </nav>
 
 <header class="hero">
-    <small>DATA SCIENCE • PROJECT PORTFOLIO</small>
-    <h1>Retail Sales Exploratory Data Analysis</h1>
-    <p>
-        Exploring retail sales data to understand patterns,
-        discover useful insights, and support better business decisions.
-    </p>
-    <span class="tag">Python · Pandas · Data Analysis</span>
+<p>PYTHON · PANDAS · DATA ANALYSIS</p>
+<h1>Retail Sales Exploratory Data Analysis</h1>
+<p>Analyzing retail sales, product performance, category trends and discount patterns across 12 stores from January to June 2026.</p>
+<div class="tags">
+<span>Python</span><span>Pandas</span><span>Matplotlib</span>
+<span>Seaborn</span><span>Data Visualization</span>
+</div>
 </header>
 
-<main class="container">
+<section class="container" id="overview">
+<h2>Project Overview</h2>
+<p class="subtitle">Key metrics from the retail sales dataset.</p>
 
-    <h2 class="section-title">Project Resources</h2>
-    <p class="subtitle">
-        Access the dataset, analysis notebook, and project report below.
-    </p>
+<div class="cards">
+<div class="card"><div class="label">TOTAL REVENUE</div><div class="value">₹45.98 Cr</div><p>Revenue recorded</p></div>
+<div class="card"><div class="label">TRANSACTIONS</div><div class="value">107,836</div><p>Total transaction records</p></div>
+<div class="card"><div class="label">UNITS SOLD</div><div class="value">278,593</div><p>Total units sold</p></div>
+<div class="card"><div class="label">RETAIL COVERAGE</div><div class="value">12 Stores</div><p>5 categories · 25 products</p></div>
+</div>
 
-    <div class="grid">
+<div class="grid">
+<div class="panel">
+<h3>Monthly Revenue</h3>
+<p>Revenue trends from January to June 2026.</p>
+<div class="chart"><canvas id="monthly"></canvas></div>
+</div>
+<div class="panel">
+<h3>Revenue by Category</h3>
+<p>Comparison of total revenue across categories.</p>
+<div class="chart"><canvas id="category"></canvas></div>
+</div>
+</div>
+</section>
 
-        <article class="card blue">
-            <div class="icon">📘</div>
-            <h3>Jupyter Notebook</h3>
-            <p>Explore the Python code and exploratory data analysis.</p>
-            <a class="btn blue-btn"
-               href="MUC01_Retail_Sales_EDA.ipynb">
-               View Notebook ↗
-            </a>
-        </article>
+<section class="container" id="analysis">
+<h2>Data Analysis</h2>
+<p class="subtitle">Charts showing sales patterns and product performance.</p>
 
-        <article class="card teal">
-            <div class="icon">🗃️</div>
-            <h3>Sales Dataset</h3>
-            <p>Access the CSV data used for the retail analysis.</p>
-            <a class="btn teal-btn"
-               href="MUC01_Retail_Sales_Dataset.csv">
-               View Dataset ↗
-            </a>
-        </article>
+<div class="grid">
+<div class="panel">
+<h3>Top Products by Revenue</h3>
+<p>Five highest-revenue products.</p>
+<div class="chart"><canvas id="products"></canvas></div>
+</div>
+<div class="panel">
+<h3>Average Daily Revenue</h3>
+<p>Revenue comparison by weekday.</p>
+<div class="chart"><canvas id="weekday"></canvas></div>
+</div>
+</div>
 
-        <article class="card purple">
-            <div class="icon">📄</div>
-            <h3>Project Report</h3>
-            <p>Read the project summary and documented findings.</p>
-            <a class="btn purple-btn"
-               href="MUC01_DIET_Summary.docx">
-               Open Report ↗
-            </a>
-        </article>
+<div class="grid">
+<div class="panel">
+<h3>Revenue by Discount</h3>
+<p>Average transaction revenue at each discount level.</p>
+<div class="chart"><canvas id="discount"></canvas></div>
+</div>
+<div class="panel">
+<h3>Units Sold by Discount</h3>
+<p>Average units per transaction.</p>
+<div class="chart"><canvas id="units"></canvas></div>
+</div>
+</div>
 
-    </div>
+<div class="panel" style="margin-top:22px">
+<h3>Top 5 Products</h3>
+<div class="tablebox">
+<table>
+<thead><tr><th>Rank</th><th>Product</th><th>Category</th><th>Revenue</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Headphones</td><td>Electronics</td><td>₹4.77 Cr</td></tr>
+<tr><td>2</td><td>Laptop</td><td>Electronics</td><td>₹4.66 Cr</td></tr>
+<tr><td>3</td><td>Mobile Phone</td><td>Electronics</td><td>₹4.57 Cr</td></tr>
+<tr><td>4</td><td>Tablet</td><td>Electronics</td><td>₹4.47 Cr</td></tr>
+<tr><td>5</td><td>Smart TV</td><td>Electronics</td><td>₹4.19 Cr</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 
-    <section class="about">
-        <h3>🎯 About This Project</h3>
-        <p>
-            This project focuses on exploring retail sales data,
-            identifying trends, and presenting findings in a clear,
-            structured format. The notebook contains the analysis,
-            while the dataset and report provide supporting resources.
-        </p>
-    </section>
+<section class="container" id="findings">
+<h2>Key Findings</h2>
+<p class="subtitle">Important observations from the analysis.</p>
 
-</main>
+<div class="findings">
+<div class="finding"><h3>01. Electronics Declined</h3><p>Revenue fell from ₹4.57 Cr in January to ₹2.97 Cr in June, a decrease of 35.02%.</p></div>
+<div class="finding"><h3>02. Apparel Grew</h3><p>Revenue increased from ₹1.00 Cr in January to ₹1.35 Cr in June.</p></div>
+<div class="finding"><h3>03. Grocery Stability</h3><p>Grocery revenue stayed comparatively stable during the six-month period.</p></div>
+<div class="finding"><h3>04. Saturday Sales</h3><p>Saturday recorded the highest average daily revenue, while Monday was the lowest.</p></div>
+<div class="finding"><h3>05. Monthly Trend</h3><p>January had the highest monthly revenue, while June had the lowest.</p></div>
+<div class="finding"><h3>06. Discount Patterns</h3><p>Average units sold remained around 2.57–2.60 across discount levels.</p></div>
+</div>
+</section>
+
+<section class="container" id="recommendations">
+<h2>Business Recommendations</h2>
+<p class="subtitle">Suggested next steps based on observed data.</p>
+
+<div class="recommendations">
+<div class="recommendation"><h3>Review Electronics</h3><p>Check product demand, stock availability, pricing and supplier changes to understand the decline.</p></div>
+<div class="recommendation"><h3>Study Apparel Growth</h3><p>Identify which products and stores contributed to the revenue increase.</p></div>
+<div class="recommendation"><h3>Test Discounts</h3><p>Compare discounts with profit margins before deciding whether promotions are effective.</p></div>
+<div class="recommendation"><h3>Analyze Weekdays</h3><p>Investigate lower Monday sales and test targeted promotions.</p></div>
+</div>
+
+<div class="note">
+<strong>Data limitation:</strong> The dataset does not include product costs, profit margins, stock availability or marketing spend. Therefore, revenue trends alone cannot establish profitability or explain the causes of sales changes.
+</div>
+</section>
+
+<section class="container" id="resources">
+<h2>Project Resources</h2>
+<p class="subtitle">Keep these files in the same GitHub repository as index.html.</p>
+
+<div class="resources">
+<div class="resource">
+<h3>📊 Analysis Notebook</h3>
+<p>Python code, analysis and visualizations.</p>
+<a href="MUC01_Retail_Sales_EDA.ipynb">Open Notebook</a>
+</div>
+<div class="resource">
+<h3>🗃️ Dataset</h3>
+<p>Original retail sales CSV file.</p>
+<a href="MUC01_Retail_Sales_Dataset.csv">Open Dataset</a>
+</div>
+<div class="resource">
+<h3>📄 Project Report</h3>
+<p>Project summary document.</p>
+<a href="MUC01_DIET_Summary.docx">Open Report</a>
+</div>
+</div>
+</section>
 
 <footer>
-    <strong>Retail Sales EDA</strong><br>
-    Academic Project · Data Analytics
+<strong>Retail Sales Exploratory Data Analysis</strong><br>
+Prepared by Bade Rani · DIET · Calibo AI Academy
 </footer>
 
+<script>
+Chart.defaults.font.family="Arial";
+Chart.defaults.color="#64748b";
+
+const money=v=>"₹"+(v/10000000).toFixed(2)+" Cr";
+const axisMoney=v=>"₹"+(v/10000000).toFixed(1)+" Cr";
+
+new Chart(document.getElementById("monthly"),{
+ type:"line",
+ data:{
+ labels:["Jan","Feb","Mar","Apr","May","Jun"],
+ datasets:[{
+ label:"Revenue",
+ data:[84768131,73833666,80689885,75670487,75559873,69282134],
+ borderColor:"#4f46e5",
+ backgroundColor:"#4f46e522",
+ fill:true,
+ tension:0.3
+ }]
+ },
+ options:{
+ responsive:true,maintainAspectRatio:false,
+ plugins:{legend:{display:false}},
+ scales:{y:{ticks:{callback:axisMoney}}}
+ }
+});
+
+new Chart(document.getElementById("category"),{
+ type:"doughnut",
+ data:{
+ labels:["Electronics","Home & Kitchen","Apparel","Grocery","Personal Care"],
+ datasets:[{
+ data:[226527725,81845721,69479590,42302581,39648560],
+ backgroundColor:["#4f46e5","#0d9488","#d97706","#2563eb","#db2777"]
+ }]
+ },
+ options:{responsive:true,maintainAspectRatio:false}
+});
+
+new Chart(document.getElementById("products"),{
+ type:"bar",
+ data:{
+ labels:["Headphones","Laptop","Mobile Phone","Tablet","Smart TV"],
+ datasets:[{
+ label:"Revenue",
+ data:[47696054,46551078,45654037,44744389,41882166],
+ backgroundColor:["#4f46e5","#6366f1","#0d9488","#d97706","#db2777"]
+ }]
+ },
+ options:{
+ indexAxis:"y",responsive:true,maintainAspectRatio:false,
+ plugins:{legend:{display:false}}
+ }
+});
+
+new Chart(document.getElementById("weekday"),{
+ type:"bar",
+ data:{
+ labels:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+ datasets:[{
+ label:"Average Daily Revenue",
+ data:[2012141,2054130,2228117,2245493,2623612,3523605,3083375],
+ backgroundColor:"#0d9488"
+ }]
+ },
+ options:{
+ responsive:true,maintainAspectRatio:false,
+ plugins:{legend:{display:false}}
+ }
+});
+
+new Chart(document.getElementById("discount"),{
+ type:"bar",
+ data:{
+ labels:["0%","5%","10%","15%","20%"],
+ datasets:[{
+ label:"Average Revenue",
+ data:[4685.65,4303.73,4005.55,4069.16,3631.73],
+ backgroundColor:"#8b5cf6"
+ }]
+ },
+ options:{
+ responsive:true,maintainAspectRatio:false,
+ plugins:{legend:{display:false}}
+ }
+});
+
+new Chart(document.getElementById("units"),{
+ type:"line",
+ data:{
+ labels:["0%","5%","10%","15%","20%"],
+ datasets:[{
+ label:"Average Units",
+ data:[2.59,2.59,2.57,2.60,2.58],
+ borderColor:"#0d9488",
+ backgroundColor:"#0d948822",
+ fill:true,
+ tension:0.25
+ }]
+ },
+ options:{
+ responsive:true,maintainAspectRatio:false,
+ plugins:{legend:{display:false}},
+ scales:{y:{min:2.4,max:2.8}}
+ }
+});
+</script>
 </body>
 </html>
